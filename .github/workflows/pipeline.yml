@@ -7,6 +7,8 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
+env:
+  COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
 
 jobs:
   simple_deployment_pipeline:
@@ -36,7 +38,7 @@ jobs:
         
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: deploy app with fly
-        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, " "), "#skip") }}
+        if: ${{ github.event_name == 'push' }}
         run: flyctl deploy --remote-only
         env: 
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
