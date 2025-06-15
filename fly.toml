@@ -29,9 +29,6 @@ primary_region = 'arn'
   timeout = "5s"
   path = "/health"
 
-[deploy]
-  strategy = "canary"
-
 
 [[vm]]
   memory = '1gb'
