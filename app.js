@@ -7,11 +7,11 @@ const PORT = process.env.PORT || 5001;
 app.use(express.static("dist"));
 
 app.get("/version", (req, res) => {
-  res.send("7");
+  res.send("6");
 });
 
 app.get("/health", (req, res) => {
-  res.status(500).send("Simulated failure");
+  res.send("ok");
 });
 
 app.listen(PORT, () => {
