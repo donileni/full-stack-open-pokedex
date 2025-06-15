@@ -47,7 +47,9 @@ jobs:
         with:
            webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
            severity: error
-           details: The job failed!
+           description: commit ${{ toJson(github).url }} broke the build :(
+           text: >
+            Build failed
 
   tag_release:
     if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip') }}
