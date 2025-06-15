@@ -47,7 +47,7 @@ jobs:
         with:
            webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
            severity: error
-           description: commit ${{ toJson(github.event.commits.*.url)[0] }} by ${{ toJson(github.event.commits.*.committer.username)[0]  }} broke the build :(
+           description: commit ${{ github.event.commits[0].url }} by ${{ github.event.commits[0].committer.username  }} broke the build :(
            text: >
             Build failed
 
