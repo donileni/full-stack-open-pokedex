@@ -59,7 +59,7 @@ jobs:
         uses: rjstone/discord-webhook-notify@v2
         if: ${{ success() }}
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           severity: info
           details: All steps passed!
           text: >
@@ -68,6 +68,6 @@ jobs:
         uses: rjstone/discord-webhook-notify@v2
         if: ${{ !success() }}
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           severity: error
           details: The job failed!
